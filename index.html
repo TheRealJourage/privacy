@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Boardgame Vote</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="container">
+    <h1>Boardgame Vote</h1>
+    <p class="sub">Jeder Spieler stimmt pro Runde genau einmal ab. Ergebnis erscheint, wenn alle abgestimmt haben.</p>
+  </header>
+
+  <main class="container grid">
+    <section class="card">
+      <h2>Spieler</h2>
+
+      <form id="addPlayerForm" class="row" autocomplete="off">
+        <input id="playerNameInput" type="text" maxlength="24" placeholder="Name eingeben…" />
+        <button type="submit">Spieler hinzufügen</button>
+      </form>
+
+      <div id="playersEmptyHint" class="hint">
+        Noch keine Spieler. Bitte Namen hinzufügen.
+      </div>
+
+      <ul id="playersList" class="players"></ul>
+
+      <div class="divider"></div>
+
+      <div class="actions">
+        <button id="roundResetBtn" class="secondary" type="button">Round Reset</button>
+        <button id="gameResetBtn" class="danger" type="button">Game Reset</button>
+      </div>
+
+      <p class="small">
+        Hinweis: State wird im Browser gespeichert (Reload bleibt erhalten). Game Reset löscht alles.
+      </p>
+    </section>
+
+    <section class="card">
+      <h2>Runde</h2>
+
+      <div class="status" id="roundStatus">
+        <span class="badge" id="roundBadge">Warten auf Spieler…</span>
+        <span class="muted" id="progressText"></span>
+      </div>
+
+      <div class="votes">
+        <div class="voteBox">
+          <div class="label">Ja</div>
+          <div class="count" id="yesCount">0</div>
+        </div>
+        <div class="voteBox">
+          <div class="label">Nein</div>
+          <div class="count" id="noCount">0</div>
+        </div>
+      </div>
+
+      <div id="resultHint" class="hint">
+        Ergebnis erscheint automatisch, sobald alle Spieler abgestimmt haben.
+      </div>
+
+      <div class="divider"></div>
+
+      <h3>Abstimmen</h3>
+      <p class="muted small">
+        Wähle zuerst deinen Spieler und dann Ja/Nein. Du kannst pro Runde nur einmal abstimmen.
+      </p>
+
+      <div class="row">
+        <select id="playerSelect"></select>
+      </div>
+
+      <div class="actions">
+        <button id="voteYesBtn" type="button">Ja (Votes Yes)</button>
+        <button id="voteNoBtn" type="button">Nein (Votes No)</button>
+      </div>
+
+      <div id="message" class="message" role="status" aria-live="polite"></div>
+    </section>
+  </main>
+
+  <footer class="container footer">
+    <span class="muted small">GitHub Pages Ready • Single-Page App</span>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
